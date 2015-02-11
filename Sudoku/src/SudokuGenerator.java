@@ -16,12 +16,18 @@ public class SudokuGenerator
 	public static void main(String[] args)
 		{
 		displayGrid();
-		switchBlocks();
-//		for(int i = 0; i < 100; i++);
-//			{
-//			transformBasicGridRow();
-//			transformBasicGridColumn();
-//			}
+		int rand = (int)(Math.random() * 2) + 2;
+		System.out.println(rand);
+		for (int i = 0; i < rand; i++)
+			switchBlocks();
+		rand = (int)(Math.random() * 2) + 2;
+		System.out.println(rand);
+		for (int i = 0; i < rand; i++)
+			transformBasicGridRow();
+		rand = (int)(Math.random() * 2) + 2;
+		System.out.println(rand);
+		for (int i = 0; i < rand; i++)
+			transformBasicGridColumn();		
 		displayGrid();
 		}
 
