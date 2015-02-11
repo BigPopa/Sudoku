@@ -16,11 +16,12 @@ public class SudokuGenerator
 	public static void main(String[] args)
 		{
 		displayGrid();
-		for(int i = 0; i < 100; i++);
-			{
-			transformBasicGridRow();
-			transformBasicGridColumn();
-			}
+		switchBlocks();
+//		for(int i = 0; i < 100; i++);
+//			{
+//			transformBasicGridRow();
+//			transformBasicGridColumn();
+//			}
 		displayGrid();
 		}
 
@@ -45,6 +46,43 @@ public class SudokuGenerator
 			int temp = grid[i][col];
 			grid[i][col] = grid[i][col + 2];
 			grid[i][col + 2] = temp;	
+			}
+		}
+	
+	public static void switchBlocks()
+		{
+		int [] temp1 = new int [9];
+		int [] temp2 = new int [9];
+		int [] temp3 = new int [9];
+		temp1 = Arrays.copyOf(grid[0], 9);
+		temp2 = Arrays.copyOf(grid[1], 9);
+		temp3 = Arrays.copyOf(grid[2], 9);
+		for (int i = 0; i < 9; i++)
+			{
+			grid[0][i] = grid[8][i];
+			grid[1][i] = grid[7][i];
+			grid[2][i] = grid[6][i];
+			}
+		grid[8] = Arrays.copyOf(temp1, 9);
+		grid[7] = Arrays.copyOf(temp2, 9);
+		grid[6] = Arrays.copyOf(temp3, 9);
+		
+		int [][] temp4 = new int [9][9];
+		int [][] temp5 = new int [9][9];
+		int [][] temp6 = new int [9][9];
+		for (int i = 0; i < 9; i++)
+			{
+			temp4[i][8] = grid[i][8];
+			temp5[i][7] = grid[i][7];
+			temp6[i][6] = grid[i][6];
+
+			grid[i][8] = grid[i][0];
+			grid[i][7] = grid[i][1];
+			grid[i][6] = grid[i][2];
+			
+			grid[i][0] = temp4[i][8];
+			grid[i][1] = temp5[i][7];
+			grid[i][2] = temp6[i][6];
 			}
 		}
 	
